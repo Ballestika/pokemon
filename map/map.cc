@@ -11,7 +11,7 @@ FILE *f;
 
 void LoadTiles(Tile** tiles, int ammount)
 {
-    if((f=fopen("C:/Users/ballestaca/pokemon/pokemon/map/pokemon.txt","r"))==NULL)
+    if((f=fopen("C:/Users/ballestaca/Desarrollo/pokemon/pokemon/map/pokemon.txt","r"))==NULL)
     {
         printf("ERROR");
     }else
@@ -21,16 +21,21 @@ void LoadTiles(Tile** tiles, int ammount)
         for(int i = 0; i<ammount && !feof(f); i++)
         {   
             char num = getc(f);
+            if(num == '\n')
+            {
+                i--;
+                continue;   
+            }
             switch(atoi(&num))
             {
                 case 0:
-                    ((*tiles+i)->sprite) = esat::SpriteFromFile("C:/Users/ballestaca/pokemon/pokemon/assets/grass.png");
+                    ((*tiles+i)->sprite) = esat::SpriteFromFile("C:/Users/ballestaca/Desarrollo/pokemon/pokemon/assets/grass.png");
                     break;
                 case 1:
-                    ((*tiles+i)->sprite) = esat::SpriteFromFile("C:/Users/ballestaca/pokemon/pokemon/assets/grass.png");
+                    ((*tiles+i)->sprite) = esat::SpriteFromFile("C:/Users/ballestaca/Desarrollo/pokemon/pokemon/assets/grass2.png");
                     break;
-                default:
-                    ((*tiles+i)->sprite) = esat::SpriteFromFile("C:/Users/ballestaca/pokemon/pokemon/assets/grass.png");
+                case 2:
+                    ((*tiles+i)->sprite) = esat::SpriteFromFile("C:/Users/ballestaca/Desarrollo/pokemon/pokemon/assets/water.png");
                     break;
             }
 
@@ -49,6 +54,7 @@ void LoadTiles(Tile** tiles, int ammount)
 void PaintMap(Map map)
 {
     Tile *tiles = map.tiles;
+
     for(int i = 0; i<map.tileAmmount; i++)
     {
         esat::DrawSprite((tiles+i)->sprite, (tiles+i)->pos.x, (tiles+i)->pos.y);

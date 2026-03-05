@@ -22,6 +22,11 @@ struct Map
     int tileSize;
 };
 
+struct Player
+{
+    esat::SpriteHandle *sprite;
+    esat::Vec2 pos;
+};
 
 #endif
 
