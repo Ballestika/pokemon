@@ -22,9 +22,9 @@ int esat::main(int argc, char **argv) {
 
     esat::DrawBegin();
     esat::DrawClear(0,0,0);
-    UpdatePlayer();
-    PaintPlayer();
     PaintMap(map);
+    UpdatePlayer(&player);
+    PaintPlayer(player);
     esat::DrawEnd();
     
 	do{

@@ -22,10 +22,27 @@ struct Map
     int tileSize;
 };
 
-struct Player
+enum Directions
+{
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
+};
+
+struct Moves
 {
     esat::SpriteHandle *sprite;
+    Directions dir;
+};
+
+struct Player
+{
+    Moves *moves;
     esat::Vec2 pos;
+    Directions dir;
+    bool isMoving;
+    esat::SpriteHandle sprite;
 };
 
 #endif
